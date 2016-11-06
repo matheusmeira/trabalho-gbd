@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#define MAX 30
 typedef struct atributo
 {
-	char nomeDoAtributo;
+	char nomeDoAtributo[];
 	char tipoDoAtributo;
 }TipoAtributo;
 
