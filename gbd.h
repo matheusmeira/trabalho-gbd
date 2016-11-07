@@ -1,26 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 30
+#include <string.h>
+#define MAX 50
+
 typedef struct atributo
 {
-	char nomeDoAtributo[];
+	char nomeDoAtributo[MAX];
 	char tipoDoAtributo;
 }TipoAtributo;
 
 typedef struct tabela
 {
-	char nomeDaTabela;
+	char nomeDaTabela[MAX];
 	int numDeAtributos;
-	char chavePrimaria;
+	char chavePrimaria[MAX];
 	//atributos
 	TipoAtributo * atributos;
 }TipoTabela;
 
 typedef struct catalogo
 {
-	char nomeCatalogo;
-	char nomeDoBancoDeDados;
-	char enderecoDoBanco;
+	char nomeCatalogo[MAX];
+	char nomeDoBancoDeDados[MAX];
+	char enderecoDoBanco[MAX];
 	int tamanhoDoBanco;
 	//tabelas do banco
 	TipoTabela * tabelas;
@@ -34,5 +36,9 @@ typedef struct bancoDeDados
 }BancoDeDados;
 
 // ----------------------------------------------
-int Aloca_Area_BD ();
+BancoDeDados * Aloca_Area_BD ();
 void Desaloca_Area_BD (BancoDeDados * BD);
+BancoDeDados * Cria_BD (char nomeDaBaseDeDados[], char enderecoDaBase[], int tamanhoDaBase, int numDeCatalogos);
+int ArmazenaCatalogoNoAquivo (BancoDeDados * BD);
+int VerificaArquivo (FILE * arq);
+void LeituraDeArquivo (FILE * arq, BancoDeDados * BD);
